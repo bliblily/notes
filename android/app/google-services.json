@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1091235114106",
+    "project_id": "notes-99f9d",
+    "storage_bucket": "notes-99f9d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091235114106:android:3a6d319935dc92fa245fc3",
+        "android_client_info": {
+          "package_name": "com.example.rentr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMVXNifzvtkGR3jmaSyn9d5ll0h4jH_5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
