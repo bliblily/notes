@@ -42,7 +42,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCVkHIRL8qMChxsZzoNVkhS15-EoBwXe8k',
-    appId: '1:1091235114106:web:a829e8a236b1d17c245fc3',
+    appId: '1:1091235114106:web:148c27fceb8ef5be245fc3',
     messagingSenderId: '1091235114106',
     projectId: 'notes-99f9d',
     authDomain: 'notes-99f9d.firebaseapp.com',
@@ -56,28 +56,28 @@ class DefaultFirebaseOptions {
     projectId: 'notes-99f9d',
     storageBucket: 'notes-99f9d.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBQHWV-lS6CNkvVb9LrnNZdku9hqQvVIQQ',
     appId: '1:1091235114106:ios:cf4ebf7e71df71c4245fc3',
     messagingSenderId: '1091235114106',
     projectId: 'notes-99f9d',
     storageBucket: 'notes-99f9d.firebasestorage.app',
+    iosClientId: '1091235114106-fuoqh9ou8lqn960ouvq17p17ptvlmd85.apps.googleusercontent.com',
     iosBundleId: 'com.example.rentr',
   );
-
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyBQHWV-lS6CNkvVb9LrnNZdku9hqQvVIQQ',
     appId: '1:1091235114106:ios:cf4ebf7e71df71c4245fc3',
     messagingSenderId: '1091235114106',
     projectId: 'notes-99f9d',
     storageBucket: 'notes-99f9d.firebasestorage.app',
+    iosClientId: '1091235114106-fuoqh9ou8lqn960ouvq17p17ptvlmd85.apps.googleusercontent.com',
     iosBundleId: 'com.example.rentr',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyCVkHIRL8qMChxsZzoNVkhS15-EoBwXe8k',
-    appId: '1:1091235114106:web:148c27fceb8ef5be245fc3',
+    appId: '1:1091235114106:web:d38d693ac98284bb245fc3',
     messagingSenderId: '1091235114106',
     projectId: 'notes-99f9d',
     authDomain: 'notes-99f9d.firebaseapp.com',

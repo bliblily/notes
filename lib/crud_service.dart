@@ -1,31 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CrudService {
-  final CollectionReference items =
-      FirebaseFirestore.instance.collection('items');
+  final CollectionReference items = FirebaseFirestore.instance.collection(
+    'items',
+  );
 
-      Future<void> addItem(String name, int quantity) async {
-
-        return items.add({
-          'name': name,
-          'quantity': quantity,
-          'createdAt': Timestamp.now(),
-        });
-}
-
-      Stream<QuerySnapshot> getItems() {
-          return items.orderBy('createdAt', descending: true).snapshots();
-        }
-
-        Future<void> updateItem(String id, String name, int quantity) async {
-          return items.doc(id).update({
-            'name': name,
-            'quantity': quantity,
-          });
-        }
-
-        Future<void> deleteItem(String id) async {
-          return items.doc(id).delete();
+  Future<void> addItem(String name, int quantity) {
+    return items.add({
+      'name': name,
+      'quantity': quantity,
+      'createdAt': Timestamp.now(),
+    });
   }
 
+  Stream<QuerySnapshot> getItems() {
+    return items.orderBy('createdAt', descending: true).snapshots();
+  }
+
+  Future<void> updateItem(String id, String name, int quantity) async {
+    return items.doc(id).update({'name': name, 'quantity': quantity});
+  }
+
+  Future<void> deleteItem(String id) async {
+    return items.doc(id).delete();
+  }
 }
