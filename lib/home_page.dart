@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:notes/crud_service.dart';
 import 'package:notes/login.dart';
-import 'package:notes/register.dart';
 
 class HomePage extends StatefulWidget {
   final CrudService service;

@@ -1,12 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:notes/auth_service.dart';
 import 'package:notes/firebase_options.dart';
 import 'package:notes/home_page.dart';
 import 'package:notes/login.dart';
-import 'package:notes/register.dart';
-import 'package:notes/crud_service.dart';
 
 // Run | Debug | Profile
 void main() async {

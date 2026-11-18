@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/material.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -59,6 +58,16 @@ Future<User?> signInWithEmail(String email, String password) async {
   }
 }
 
+// FORGOT PASSWORD
+Future<void> resetPassword(String email) async {
+  try {
+    await _auth.sendPasswordResetEmail(email: email);
+  } catch (e) {
+    print("Password reset error: $e");
+    rethrow;
+  }
+}
+
 // SIGN OUT
 Future<void> signOut() async {
   if (!kIsWeb) {
@@ -69,4 +78,5 @@ Future<void> signOut() async {
 
 Stream<User?> get userStream => _auth.authStateChanges();
 }
+
 

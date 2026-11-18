@@ -15,6 +15,61 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordCtrl = TextEditingController();
   bool loading = false;
 
+  // FORGOT PASSWORD
+  void showForgotPasswordDialog() {
+    final TextEditingController resetEmailCtrl =
+        TextEditingController(text: emailCtrl.text);
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Forgot Password?"),
+        content: TextField(
+          controller: resetEmailCtrl,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            labelText: "Enter your email",
+            border: OutlineInputBorder(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            child: Text("Cancel"),
+            onPressed: () => Navigator.pop(context),
+          ),
+          ElevatedButton(
+            child: Text("Send"),
+            onPressed: () async {
+              if (resetEmailCtrl.text.isNotEmpty) {
+                try {
+                  await FirebaseAuth.instance.sendPasswordResetEmail(
+                    email: resetEmailCtrl.text.trim(),
+                  );
+
+                  Navigator.pop(context);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Password reset link sent to your email.",
+                      ),
+                    ),
+                  );
+                } on FirebaseAuthException catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(e.message ?? "Failed to send reset email."),
+                    ),
+                  );
+                }
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +97,16 @@ class _LoginPageState extends State<LoginPage> {
                   border: OutlineInputBorder(),
                 ),
               ),
+
+              // FORGOT PASSWORD BUTTON
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  child: Text("Forgot Password?"),
+                  onPressed: showForgotPasswordDialog,
+                ),
+              ),
+
               SizedBox(height: 12),
               ElevatedButton(
                 child: loading
@@ -49,14 +114,17 @@ class _LoginPageState extends State<LoginPage> {
                     : Text("Login with Email"),
                 onPressed: () async {
                   setState(() => loading = true);
+
                   final credential = await FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                     email: emailCtrl.text,
                     password: passwordCtrl.text,
                   );
+
                   final user = credential.user;
                   setState(() => loading = false);
-                                    if (user != null) {
+
+                  if (user != null) {
                     if (!user.emailVerified) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -73,7 +141,9 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Invalid email or password")),
+                      SnackBar(
+                        content: Text("Invalid email or password"),
+                      ),
                     );
                   }
                 },
